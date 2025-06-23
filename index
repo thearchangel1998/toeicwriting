@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng dẫn Tương tác: TOEIC Writing - Mô tả Tranh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-button.active {
+            border-bottom-color: #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .practice-tab-button.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .tab-content, .practice-tab-content {
+            display: none;
+        }
+        .tab-content.active, .practice-tab-content.active {
+            display: block;
+        }
+        /* Styles for the accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .feedback-section {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">Làm chủ TOEIC Writing: Mô tả Tranh</h1>
+            <p class="mt-2 text-lg text-gray-600">Hướng dẫn đầy đủ để chinh phục Câu hỏi 1-5.</p>
+        </header>
+
+        <main class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <!-- Main Tab Navigation -->
+            <div class="border-b border-gray-200 mb-6">
+                <nav class="flex flex-wrap -mb-px space-x-4" aria-label="Tabs">
+                    <button data-tab-target="task-info" class="tab-button active text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Tổng quan</button>
+                    <button data-tab-target="mistakes" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Các lỗi thường gặp</button>
+                    <button data-tab-target="faqs" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Câu hỏi thường gặp</button>
+                    <button data-tab-target="exercise" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Bài tập áp dụng</button>
+                </nav>
+            </div>
+
+            <!-- Main Tab Content -->
+            <div id="task-info" class="tab-content active">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Tổng quan & Chiến lược</h2>
+                <div class="space-y-3">
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-gray-700">Mục tiêu</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600">Đối với các câu hỏi từ 1-5 của bài thi TOEIC Writing, bạn sẽ thấy một bức tranh và được cho hai từ hoặc cụm từ. Nhiệm vụ của bạn là viết một câu duy nhất, đúng ngữ pháp để mô tả bức tranh và sử dụng cả hai từ đã cho.</p>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-gray-700">Chi tiết & Tiêu chí chấm điểm</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 text-gray-600 space-y-4">
+                                <ul class="list-disc list-inside space-y-2 pl-2">
+                                    <li><span class="font-semibold">Số câu hỏi:</span> 5 câu.</li>
+                                    <li><span class="font-semibold">Thời gian:</span> Bạn có 8 phút cho toàn bộ phần này.</li>
+                                    <li><span class="font-semibold">Linh hoạt:</span> Bạn có thể thay đổi dạng của từ đã cho (ví dụ: 'drive' thành 'driving') và sử dụng chúng theo bất kỳ thứ tự nào.</li>
+                                </ul>
+                                <ul class="list-disc list-inside space-y-2 pl-2">
+                                     <h4 class="font-semibold text-gray-700 -ml-2">Tiêu chí chấm điểm:</h4>
+                                    <li><span class="font-semibold">Ngữ pháp:</span> Câu của bạn có đúng ngữ pháp không?</li>
+                                    <li><span class="font-semibold">Sự liên quan:</span> Câu của bạn có mô tả chính xác bức tranh không?</li>
+                                    <li><span class="font-semibold">Sử dụng từ khóa:</span> Bạn đã sử dụng đúng cả hai từ khóa được cung cấp chưa?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-gray-700">Chiến lược 4 bước để thành công</h3>
+                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                         <div class="accordion-content">
+                            <ol class="list-decimal list-inside space-y-3 p-4 pt-0 text-gray-600">
+                                <li><strong>Phân tích tranh (10 giây):</strong> Nhanh chóng xác định chủ thể chính, hành động và bối cảnh. Chuyện gì đang xảy ra? Ai có liên quan?</li>
+                                <li><strong>Nghiên cứu từ khóa:</strong> Nhìn vào hai từ bạn phải sử dụng. Suy nghĩ về cách chúng liên quan đến bức tranh và cách bạn có thể thay đổi dạng của chúng nếu cần.</li>
+                                <li><strong>Xây dựng câu:</strong> Viết một câu hoàn chỉnh duy nhất. Bắt đầu với chủ ngữ và động từ rõ ràng. Cấu trúc đơn giản như `Chủ ngữ + Động từ + Tân ngữ` thường là tốt nhất. Sử dụng giới từ (in, on, under, beside) để thêm chi tiết về vị trí.</li>
+                                <li><strong>Xem lại và chỉnh sửa (15 giây):</strong> Kiểm tra nhanh các lỗi. Sự hòa hợp giữa chủ ngữ và động từ có đúng không? Có lỗi chính tả nào không? Bạn đã sử dụng cả hai từ khóa chưa?</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mistakes" class="tab-content">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Tránh những lỗi thường gặp này</h2>
+                <div class="space-y-3">
+                     <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-red-600">1. Lỗi ngữ pháp</h3>
+                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 space-y-2">
+                                <p class="text-gray-600">Đây là vấn đề phổ biến nhất. Hãy chú ý kỹ đến thì của động từ và sự hòa hợp giữa chủ ngữ và động từ.</p>
+                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A woman are looking at the document." (Lỗi hòa hợp chủ ngữ-động từ)</p>
+                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A woman <span class="font-bold">is</span> looking at the document."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-red-600">2. Không sử dụng cả hai từ khóa</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 space-y-2">
+                                <p class="text-gray-600">Bạn phải bao gồm cả hai từ đã cho (hoặc các biến thể của chúng). Bỏ lỡ một từ sẽ dẫn đến điểm thấp cho câu hỏi đó.</p>
+                                <p class="bg-gray-200 p-2 rounded-md"><strong>Từ khóa:</strong> `man`, `talking`</p>
+                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A man is on the phone." (Thiếu từ khóa 'talking')</p>
+                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A man is <span class="font-bold">talking</span> on the phone."</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-red-600">3. Mô tả không liên quan</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 space-y-2">
+                                <p class="text-gray-600">Câu phải mô tả chính xác bức ảnh. Đừng bịa ra một câu chuyện hoặc mô tả điều gì đó không thể nhìn thấy rõ ràng.</p>
+                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "The man is probably thinking about his vacation." (Đây là một phỏng đoán, không phải là mô tả.)</p>
+                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "The man is looking out the window."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                             <h3 class="font-semibold text-lg text-red-600">4. Viết nhiều hơn một câu</h3>
+                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                           <div class="p-4 pt-0 space-y-2">
+                                <p class="text-gray-600">Hướng dẫn rất rõ ràng: viết MỘT câu. Kết nối các ý tưởng bằng các liên từ như 'and', 'while', hoặc 'because' là được, nhưng không viết hai câu riêng biệt.</p>
+                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A man is riding a bicycle. It is a sunny day."</p>
+                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A man is riding a bicycle <span class="font-bold">while</span> the sun is shining."</p>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="faqs" class="tab-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Câu hỏi thường gặp</h2>
+                 <div class="space-y-3">
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <span class="font-semibold text-lg text-gray-700">Tôi có thể sử dụng các từ đã cho theo thứ tự bất kỳ không?</span>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600"><strong>Vâng, chắc chắn rồi.</strong> Thứ tự không quan trọng. Mục tiêu của bạn là tạo ra một câu tự nhiên và đúng ngữ pháp bao gồm cả hai từ.</p>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <span class="font-semibold text-lg text-gray-700">Tôi có phải sử dụng chính xác các từ đã cho không?</span>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600"><strong>Không.</strong> Bạn được khuyến khích thay đổi dạng của các từ để phù hợp với câu của mình. Ví dụ, nếu bạn được cho từ `drive`, bạn có thể sử dụng `driving`, `drives`, hoặc `driven`.</p>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <span class="font-semibold text-lg text-gray-700">Tôi nên mô tả mọi thứ hay chỉ tập trung vào một thứ?</span>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600">Tập trung vào hành động hoặc chủ thể quan trọng nhất trong bức tranh, đặc biệt là hành động liên quan đến các từ khóa. Bạn chỉ có một câu, vì vậy việc cố gắng mô tả mọi thứ sẽ làm cho câu của bạn dài và phức tạp.</p>
+                        </div>
+                    </div>
+                    <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <span class="font-semibold text-lg text-gray-700">Tôi có thể đưa ra giả định về bức tranh không?</span>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p class="p-4 pt-0 text-gray-600"><strong>Tốt nhất là nên tránh đưa ra các giả định.</strong> Chỉ mô tả những gì bạn có thể thấy. Nếu bạn không chắc chắn 100% về điều gì đó, bạn có thể sử dụng ngôn ngữ phỏng đoán như "Người đàn ông dường như đang..." hoặc "Trông có vẻ như...", nhưng chỉ khi cần thiết. Bám sát vào các sự kiện rõ ràng là an toàn hơn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="exercise" class="tab-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Bài tập áp dụng</h2>
+                 <!-- Nested Tab Navigation for Practices -->
+                <div class="mb-4 border-b border-gray-200">
+                     <nav class="flex space-x-2" aria-label="Practices">
+                        <button data-practice-target="practice-1" class="practice-tab-button active bg-blue-500 text-white px-3 py-2 text-sm font-medium rounded-md">Practice 1</button>
+                        <button data-practice-target="practice-2" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 2</button>
+                        <button data-practice-target="practice-3" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 3</button>
+                        <button data-practice-target="practice-4" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 4</button>
+                        <button data-practice-target="practice-5" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 5</button>
+                        <button data-practice-target="practice-6" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 6</button>
+                    </nav>
+                </div>
+                <!-- Nested Tab Content -->
+                <div id="practice-1" class="practice-tab-content active"></div>
+                <div id="practice-2" class="practice-tab-content"></div>
+                <div id="practice-3" class="practice-tab-content"></div>
+                <div id="practice-4" class="practice-tab-content"></div>
+                <div id="practice-5" class="practice-tab-content"></div>
+                <div id="practice-6" class="practice-tab-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const exercises = {
+                1: [
+                    { question: 1, keywords: ['mechanic', 'teach'], variations: { mechanic: 'mechanic(s)?', teach: 'teach(es|ing|ught)?' } },
+                    { question: 2, keywords: ['fix', 'bicycle'], variations: { fix: 'fix(es|ing|ed)?', bicycle: 'bicycle(s)?' } },
+                    { question: 3, keywords: ['sit', 'at'], variations: { sit: 'sit(s|ting)?', at: 'at' } },
+                    { question: 4, keywords: ['newspaper', 'while'], variations: { newspaper: 'newspaper(s)?', while: 'while' } },
+                    { question: 5, keywords: ['baggage', 'until'], variations: { baggage: 'baggage', until: 'until' } }
+                ],
+                2: [
+                    { question: 1, keywords: ['people', 'listen'], variations: { people: 'people', listen: 'listen(s|ing|ed)?' } },
+                    { question: 2, keywords: ['boat', 'water'], variations: { boat: 'boat(s)?', water: 'water' } },
+                    { question: 3, keywords: ['after', 'order'], variations: { after: 'after', order: 'order(s|ing|ed)?' } },
+                    { question: 4, keywords: ['on', 'telephone'], variations: { on: 'on', telephone: 'telephone(s)?' } },
+                    { question: 5, keywords: ['when', 'passenger'], variations: { when: 'when', passenger: 'passenger(s)?' } }
+                ],
+                3: [
+                    { question: 1, keywords: ['teacher', 'explain'], variations: { teacher: 'teacher(s)?', explain: 'explain(s|ing|ed)?' } },
+                    { question: 2, keywords: ['stand', 'across'], variations: { stand: 'stand(s|ing|ood)?', across: 'across' } },
+                    { question: 3, keywords: ['exercise', 'dog'], variations: { exercise: 'exercise(s|d)?', dog: 'dog(s)?' } },
+                    { question: 4, keywords: ['look', 'while'], variations: { look: 'look(s|ing|ed)?', while: 'while' } },
+                    { question: 5, keywords: ['sit', 'and'], variations: { sit: 'sit(s|ting)?', and: 'and' } }
+                ],
+                 4: [
+                    { question: 1, keywords: ['show', 'woman'], variations: { show: 'show(s|ing|ed)?', woman: 'woman|women' } },
+                    { question: 2, keywords: ['in front of', 'building'], variations: { 'in front of': 'in front of', building: 'building(s)?' } },
+                    { question: 3, keywords: ['as', 'write'], variations: { as: 'as', write: 'write(s|ing|ote)?' } },
+                    { question: 4, keywords: ['finish', 'because'], variations: { finish: 'finish(es|ing|ed)?', because: 'because' } },
+                    { question: 5, keywords: ['map', 'how'], variations: { map: 'map(s)?', how: 'how' } }
+                ],
+                 5: [
+                    { question: 1, keywords: ['woman', 'hold'], variations: { woman: 'woman|women', hold: 'hold(s|ing|eld)?' } },
+                    { question: 2, keywords: ['people', 'wait'], variations: { people: 'people', wait: 'wait(s|ing|ed)?' } },
+                    { question: 3, keywords: ['hat', 'table'], variations: { hat: 'hat(s)?', table: 'table(s)?' } },
+                    { question: 4, keywords: ['talk', 'lunch'], variations: { talk: 'talk(s|ing|ed)?', lunch: 'lunch' } },
+                    { question: 5, keywords: ['if', 'box'], variations: { if: 'if', box: 'box(es)?' } }
+                ],
+                 6: [
+                    { question: 1, keywords: ['man', 'machine'], variations: { man: 'man|men', machine: 'machine(s)?' } },
+                    { question: 2, keywords: ['street', 'stand'], variations: { street: 'street(s)?', stand: 'stand(s|ing|ood)?' } },
+                    { question: 3, keywords: ['look', 'other'], variations: { look: 'look(s|ing|ed)?', other: 'other' } },
+                    { question: 4, keywords: ['outside', 'so that'], variations: { outside: 'outside', 'so that': 'so that' } },
+                    { question: 5, keywords: ['while', 'read'], variations: { while: 'while', read: 'read(s|ing)?' } }
+                ]
+            };
+             const sampleAnswers = {
+                1: {
+                    1: ["One mechanic is teaching another how to fix something.", "A mechanic is being taught an important procedure.", "The manager is teaching the mechanic something."],
+                    2: ["The man is fixing his bicycle.", "The bicycle is being fixed."],
+                    3: ["The women are sitting at the table.", "They are sitting down for a meeting at work.", "The women sitting at the table are discussing something."],
+                    4: ["She is reading the newspaper while his clothes are being washed.", "The woman is reading the newspaper while waiting for the wash.", "The newspaper in the laundry room for people to read while they wait."],
+                    5: ["She will not check in her baggage until she has finished using her phone.", "The woman will sit next to her baggage until her flight arrives."]
+                },
+                2: {
+                    1: ["Some people are listening to the man who is holding the pen.", "A group of people are listening to the man behind the desk.", "The people listening to the presentation are wearing business suits."],
+                    2: ["There is only one boat on the water.", "The boat is floating on the water."],
+                    3: ["They will order food after they look at the menu.", "Their meals will come after they order.", "After examining the menu, they will order lunch."],
+                    4: ["She is talking on the telephone.", "The woman is having a conversation on the telephone."],
+                    5: ["The passengers will step forward when the subway arrives.", "When the passengers get on the board, the train will leave the station.", "The passengers will try to find a seat when they get on the subway."]
+                },
+                3: {
+                    1: ["The math teacher is explaining how to solve a problem.", "The teacher is explaining the math equation.", "The man is explaining something on the board is a teacher."],
+                    2: ["The man stands across form the woman.", "The people are standing across from each other."],
+                    3: ["The woman is exercising with her dogs.", "The dogs is getting some exercise outdoors."],
+                    4: ["The employees are looking at the man while he explains something.", "The people are looking at a graph while the man delivers a presentation."],
+                    5: ["The people are sitting and listening to the speaker.", "The audience is sitting and the man is giving a presentation."]
+                },
+                4: {
+                    1: ["The woman is showing the girl how to fix a car.", "The woman shows the engine of the car to her child."],
+                    2: ["The beach is located in front of the buildings.", "There is a small park in front of the apartment buildings."],
+                    3: ["She is writing some notes as she talks on the phone.", "As well as writing down some information, the woman is also holding a conversation."],
+                    4: ["They have to finish the meeting soon because the time is up.", "Because one man needs to go, their meeting has to finish."],
+                    5: ["The people are examining the map to see how far they have to go.", "They are reading the map to check how to get there.", "The woman is showing the man how to read the map."]
+                },
+                5: {
+                    1: ["The woman is holding the cup and looking at the computer.", "The computer is used by a woman holding a cup."],
+                    2: ["Lots of people are waiting in a long line.", "The people have to wait for a long time."],
+                    3: ["Hats are displayed on the table.", "There are a lot of hats on the table.", "The hats on the table are nearly the same size."],
+                    4: ["They are talking over lunch.", "They are having lunch and talking to each other."],
+                    5: ["If the man drops the box, it will be damaged.", "If the box had handles, it would be easier to carry."]
+                },
+                6: {
+                    1: ["The man is using a machine.", "The man is touching some buttons on the machine."],
+                    2: ["A few people are standing on the street.", "There are some people standing next to each other on the street."],
+                    3: ["The woman is looking at the other tourist site."],
+                    4: ["He is talking on the phone outside so that he can get some fresh air.", "He got out of his car so that he can talk outside."],
+                    5: ["They are reading newspaper while they wait for some guests."]
+                }
+            };
+
+            const changeTab = (clickedButton) => {
+                const tabId = clickedButton.dataset.tabTarget;
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    button.classList.remove('active');
+                });
+                const newActiveTab = document.getElementById(tabId);
+                if (newActiveTab) {
+                    newActiveTab.classList.add('active');
+                    newActiveTab.style.display = 'block';
+                }
+                clickedButton.classList.add('active');
+            };
+            
+            const changePracticeTab = (clickedButton) => {
+                const practiceId = clickedButton.dataset.practiceTarget;
+                 document.querySelectorAll('.practice-tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.practice-tab-button').forEach(button => {
+                    button.classList.remove('active', 'bg-blue-500', 'text-white');
+                     button.classList.add('bg-gray-200', 'text-gray-600');
+                });
+                const newActivePractice = document.getElementById(practiceId);
+                if (newActivePractice) {
+                    newActivePractice.classList.add('active');
+                }
+                clickedButton.classList.add('active', 'bg-blue-500', 'text-white');
+                clickedButton.classList.remove('bg-gray-200', 'text-gray-600');
+            }
+
+            const toggleAccordion = (button) => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+                const parent = button.closest('.space-y-3'); 
+                if (parent) {
+                    parent.querySelectorAll('.accordion-content').forEach(item => {
+                        if (item !== content && item.style.maxHeight) {
+                            item.style.maxHeight = null;
+                            const prevIcon = item.previousElementSibling.querySelector('svg');
+                            if(prevIcon) {
+                               prevIcon.classList.remove('rotate-180');
+                            }
+                        }
+                    });
+                }
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    if(icon) icon.classList.remove('rotate-180');
+                } else {
+                    if (content) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                    if(icon) icon.classList.add('rotate-180');
+                }
+            };
+
+            const checkAndHighlight = (practiceNum, questionNum) => {
+                const exerciseData = exercises[practiceNum].find(e => e.question === questionNum);
+                if (!exerciseData) return;
+
+                const exerciseDiv = document.getElementById(`exercise-${practiceNum}-${questionNum}`);
+                if (!exerciseDiv) return;
+
+                const textArea = exerciseDiv.querySelector('textarea');
+                const button = exerciseDiv.querySelector('button[data-check-exercise]');
+                const feedbackDiv = exerciseDiv.querySelectorAll('.feedback-section')[0];
+                const sampleAnswerDiv = exerciseDiv.querySelectorAll('.feedback-section')[1];
+                const highlightedP = feedbackDiv.querySelector('.user-answer-highlighted');
+                const keywordFeedbackP = feedbackDiv.querySelector('.keyword-feedback');
+                
+                let userAnswer = textArea.value;
+
+                highlightedP.innerHTML = "";
+                keywordFeedbackP.textContent = "";
+               
+                if (!userAnswer.trim()) {
+                    highlightedP.textContent = "Bạn chưa nhập câu trả lời.";
+                    feedbackDiv.classList.remove('hidden');
+                    sampleAnswerDiv.classList.add('hidden');
+                    return;
+                }
+
+                let highlightedAnswer = userAnswer;
+                let foundKeywords = 0;
+                Object.values(exerciseData.variations).forEach(variation => {
+                    const regex = new RegExp(`\\b(${variation})\\b`, 'gi');
+                    if (regex.test(highlightedAnswer)) {
+                        foundKeywords++;
+                        highlightedAnswer = highlightedAnswer.replace(regex, `<strong class="font-bold text-blue-600 bg-blue-100 px-1 rounded-md">$1</strong>`);
+                    }
+                });
+
+                if (foundKeywords === exerciseData.keywords.length) {
+                    keywordFeedbackP.textContent = "✔ Đã sử dụng đủ các từ khóa.";
+                    keywordFeedbackP.className = "keyword-feedback mt-2 text-sm font-medium text-green-600";
+                } else {
+                    keywordFeedbackP.textContent = `⚠ Thiếu từ khóa. (Tìm thấy ${foundKeywords}/${exerciseData.keywords.length})`;
+                    keywordFeedbackP.className = "keyword-feedback mt-2 text-sm font-medium text-red-600";
+                }
+
+                highlightedP.innerHTML = highlightedAnswer;
+                
+                feedbackDiv.classList.remove('hidden');
+                sampleAnswerDiv.classList.remove('hidden');
+                button.disabled = true;
+                button.classList.add('opacity-50', 'cursor-not-allowed');
+            };
+            
+            // --- DYNAMIC CONTENT GENERATION & EVENT LISTENER ATTACHMENT ---
+            
+            for (let i = 1; i <= 6; i++) {
+                const practiceContainer = document.getElementById(`practice-${i}`);
+                if (practiceContainer && exercises[i]) {
+                    if (i === 1) { 
+                        practiceContainer.innerHTML += `<h3 class="text-xl font-semibold mb-4 text-gray-700">Practice 1 (Trang 136-137)</h3>`;
+                    } else {
+                        practiceContainer.innerHTML += `<h3 class="text-xl font-semibold mb-4 text-gray-700">Practice ${i}</h3>`;
+                    }
+                    exercises[i].forEach(ex => {
+                        const answers = (sampleAnswers[i] && sampleAnswers[i][ex.question]) ? sampleAnswers[i][ex.question] : ["(Chưa có câu trả lời mẫu)"];
+                        const answersHtml = answers.map(answer => `<li>${answer}</li>`).join('');
+
+                        const exerciseHTML = `
+                            <div class="mb-10 p-4 border rounded-lg" id="exercise-${i}-${ex.question}">
+                                <h3 class="font-semibold text-lg mb-2">Câu hỏi ${ex.question}</h3>
+                                <p class="mb-2"><strong>Từ khóa:</strong> \`${ex.keywords.join('`, `')}\`</p>
+                                <textarea class="w-full p-2 border rounded-md" rows="3" placeholder="Viết câu trả lời của bạn vào đây..."></textarea>
+                                <button data-check-exercise="${ex.question}" data-practice="${i}" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Kiểm tra</button>
+                                
+                                <div class="hidden mt-4 p-3 bg-gray-50 border border-gray-200 rounded-lg feedback-section">
+                                    <h4 class="font-semibold">Câu của bạn:</h4>
+                                    <p class="user-answer-highlighted break-words"></p>
+                                    <p class="keyword-feedback mt-2 text-sm font-medium"></p>
+                                </div>
+
+                                <div class="hidden mt-4 p-3 bg-green-100 border-l-4 border-green-500 rounded-r-lg feedback-section">
+                                    <h4 class="font-semibold">Câu trả lời mẫu:</h4>
+                                    <ul class="list-disc list-inside mt-1 space-y-1">
+                                        ${answersHtml}
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
+                        practiceContainer.innerHTML += exerciseHTML;
+                    });
+                }
+            }
+
+
+            // Attach all event listeners
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => changeTab(button));
+            });
+            document.querySelectorAll('.accordion-toggle-button').forEach(button => {
+                button.addEventListener('click', () => toggleAccordion(button));
+            });
+             document.querySelectorAll('.practice-tab-button').forEach(button => {
+                button.addEventListener('click', () => changePracticeTab(button));
+            });
+            document.querySelectorAll('[data-check-exercise]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const exerciseId = parseInt(button.dataset.checkExercise, 10);
+                    const practiceId = parseInt(button.dataset.practice, 10);
+                    checkAndHighlight(practiceId, exerciseId);
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
