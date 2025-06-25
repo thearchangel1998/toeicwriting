@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hướng dẫn Tương tác: TOEIC Writing - Mô tả Tranh</title>
+    <title>TOEIC Writing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+        .main-tab-button.active {
+            border-bottom-color: #ef4444;
+            color: #ef4444;
+            font-weight: 600;
         }
         .tab-button.active {
             border-bottom-color: #3b82f6;
@@ -20,13 +25,12 @@
             background-color: #3b82f6;
             color: white;
         }
-        .tab-content, .practice-tab-content {
+        .main-tab-content, .tab-content, .practice-tab-content {
             display: none;
         }
-        .tab-content.active, .practice-tab-content.active {
+        .main-tab-content.active, .tab-content.active, .practice-tab-content.active {
             display: block;
         }
-        /* Styles for the accordion */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -39,204 +43,372 @@
             color: #2563eb;
             font-weight: 600;
         }
+        .email-example {
+            background-color: #f3f4f6;
+            border-left: 4px solid #9ca3af;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+        /* Drag and Drop Styles */
+        .drop-zone {
+            border: 2px dashed #d1d5db;
+            min-height: 50px;
+            transition: background-color 0.2s;
+        }
+        .drop-zone.drag-over {
+            background-color: #dbeafe;
+        }
+        .draggable {
+            cursor: grab;
+            user-select: none;
+        }
+        .draggable:active {
+            cursor: grabbing;
+        }
+        .drop-zone.correct {
+            border-color: #16a34a;
+            background-color: #f0fdf4;
+        }
+        .drop-zone.incorrect {
+            border-color: #dc2626;
+            background-color: #fef2f2;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8">
         <header class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">Làm chủ TOEIC Writing: Mô tả Tranh</h1>
-            <p class="mt-2 text-lg text-gray-600">Hướng dẫn đầy đủ để chinh phục Câu hỏi 1-5.</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">TOEIC Writing</h1>
+            <p class="mt-2 text-lg text-gray-600">Hướng dẫn và Bài tập</p>
         </header>
 
         <main class="bg-white rounded-xl shadow-lg p-6 md:p-8">
-            <!-- Main Tab Navigation -->
-            <div class="border-b border-gray-200 mb-6">
-                <nav class="flex flex-wrap -mb-px space-x-4" aria-label="Tabs">
-                    <button data-tab-target="task-info" class="tab-button active text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Tổng quan</button>
-                    <button data-tab-target="mistakes" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Các lỗi thường gặp</button>
-                    <button data-tab-target="faqs" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Câu hỏi thường gặp</button>
-                    <button data-tab-target="exercise" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Bài tập áp dụng</button>
+            <!-- Main Day Tabs Navigation -->
+            <div class="border-b border-gray-300 mb-6">
+                 <nav class="flex -mb-px space-x-6" aria-label="Main Tabs">
+                    <button data-main-tab-target="day1-content" class="main-tab-button active text-lg font-medium text-gray-500 hover:text-red-600 py-3 px-1 border-b-2 border-transparent">Day 1: Describe Pictures</button>
+                    <button data-main-tab-target="day2-content" class="main-tab-button text-lg font-medium text-gray-500 hover:text-red-600 py-3 px-1 border-b-2 border-transparent">Day 2: Write Emails</button>
                 </nav>
             </div>
-
+            
             <!-- Main Tab Content -->
-            <div id="task-info" class="tab-content active">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Tổng quan & Chiến lược</h2>
-                <div class="space-y-3">
+            <div id="day1-content" class="main-tab-content active">
+                <div id="day1-inner-content">
+                     <!-- Secondary Tab Navigation -->
+                    <div class="border-b border-gray-200 mb-6">
+                        <nav class="flex flex-wrap -mb-px space-x-4" aria-label="Tabs">
+                            <button data-tab-target="task-info" class="tab-button active text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Tổng quan</button>
+                            <button data-tab-target="mistakes" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Các lỗi thường gặp</button>
+                            <button data-tab-target="faqs" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Câu hỏi thường gặp</button>
+                            <button data-tab-target="exercise" class="tab-button text-sm sm:text-base font-medium text-gray-500 hover:text-blue-600 py-3 px-4 border-b-2 border-transparent">Bài tập áp dụng</button>
+                        </nav>
+                    </div>
+
+                    <!-- Secondary Tab Content -->
+                    <div id="task-info" class="tab-content active">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Tổng quan & Chiến lược</h2>
+                        <div class="space-y-3">
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-gray-700">Mục tiêu</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-4 pt-0 text-gray-600">Đối với các câu hỏi từ 1-5 của bài thi TOEIC Writing, bạn sẽ thấy một bức tranh và được cho hai từ hoặc cụm từ. Nhiệm vụ của bạn là viết <strong class="highlight">một câu duy nhất</strong>, <strong class="highlight">đúng ngữ pháp</strong> để mô tả bức tranh và <strong class="highlight">sử dụng cả hai từ đã cho</strong>.</p>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-gray-700">Chi tiết & Tiêu chí chấm điểm</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="p-4 pt-0 text-gray-600 space-y-4">
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
+                                            <li><span class="font-semibold">Số câu hỏi:</span> 5 câu.</li>
+                                            <li><span class="font-semibold">Thời gian:</span> Bạn có <strong class="highlight">8 phút</strong> cho toàn bộ phần này.</li>
+                                            <li><span class="font-semibold">Linh hoạt:</span> Bạn có thể <strong class="highlight">thay đổi dạng của từ</strong> đã cho (ví dụ: 'drive' thành 'driving') và sử dụng chúng theo <strong class="highlight">bất kỳ thứ tự nào</strong>.</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
+                                            <h4 class="font-semibold text-gray-700 -ml-2">Tiêu chí chấm điểm:</h4>
+                                            <li><span class="font-semibold">Ngữ pháp:</span> Câu của bạn có đúng ngữ pháp không?</li>
+                                            <li><span class="font-semibold">Sự liên quan:</span> Câu của bạn có mô tả chính xác bức tranh không?</li>
+                                            <li><span class="font-semibold">Sử dụng từ khóa:</span> Bạn đã sử dụng đúng cả hai từ khóa được cung cấp chưa?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-gray-700">Chiến lược 4 bước để thành công</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <ol class="list-decimal list-inside space-y-3 p-4 pt-0 text-gray-600">
+                                        <li><strong>Phân tích tranh (10 giây):</strong> Nhanh chóng xác định <strong class="highlight">chủ thể chính, hành động, và bối cảnh</strong>. Chuyện gì đang xảy ra? Ai có liên quan?</li>
+                                        <li><strong>Nghiên cứu từ khóa:</strong> Nhìn vào hai từ bạn phải sử dụng. Suy nghĩ về cách chúng <strong class="highlight">liên quan đến bức tranh</strong> và cách bạn có thể thay đổi dạng của chúng nếu cần.</li>
+                                        <li><strong>Xây dựng câu:</strong> Viết <strong class="highlight">một câu hoàn chỉnh duy nhất</strong>. Bắt đầu với chủ ngữ và động từ rõ ràng. Cấu trúc đơn giản như `Chủ ngữ + Động từ + Tân ngữ` thường là tốt nhất.</li>
+                                        <li><strong>Xem lại và chỉnh sửa (15 giây):</strong> Kiểm tra nhanh các lỗi. <strong class="highlight">Sự hòa hợp chủ ngữ-động từ</strong> có đúng không? Có <strong class="highlight">lỗi chính tả</strong> nào không? Bạn đã <strong class="highlight">sử dụng cả hai từ khóa</strong> chưa?</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mistakes" class="tab-content">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Tránh những lỗi thường gặp này</h2>
+                        <div class="space-y-3">
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-red-600">1. Lỗi ngữ pháp</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="p-4 pt-0 space-y-2">
+                                        <p class="text-gray-600">Đây là vấn đề phổ biến nhất. Hãy chú ý kỹ đến <strong class="highlight">thì của động từ</strong> và <strong class="highlight">sự hòa hợp giữa chủ ngữ và động từ</strong>.</p>
+                                        <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A woman <strong class="font-bold">are</strong> looking at the document."</p>
+                                        <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A woman <strong class="font-bold">is</strong> looking at the document."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-red-600">2. Không sử dụng cả hai từ khóa</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="p-4 pt-0 space-y-2">
+                                        <p class="text-gray-600">Bạn <strong class="highlight">phải bao gồm cả hai từ đã cho</strong> (hoặc các biến thể của chúng). Bỏ lỡ một từ sẽ dẫn đến điểm thấp cho câu hỏi đó.</p>
+                                        <p class="bg-gray-200 p-2 rounded-md"><strong>Từ khóa:</strong> `man`, `talking`</p>
+                                        <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A man is on the phone." (Thiếu từ khóa <strong class="font-bold">'talking'</strong>)</p>
+                                        <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A man is <strong class="font-bold">talking</strong> on the phone."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-red-600">3. Mô tả không liên quan</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="p-4 pt-0 space-y-2">
+                                        <p class="text-gray-600">Câu phải mô tả <strong class="highlight">chính xác</strong> bức ảnh. <strong class="highlight">Đừng bịa ra một câu chuyện</strong> hoặc mô tả điều gì đó không thể nhìn thấy rõ ràng.</p>
+                                        <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "The man is probably thinking about his vacation." (Đây là một <strong class="font-bold">phỏng đoán</strong>, không phải là mô tả.)</p>
+                                        <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "The man is looking out the window."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <h3 class="font-semibold text-lg text-red-600">4. Viết nhiều hơn một câu</h3>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                   <div class="p-4 pt-0 space-y-2">
+                                        <p class="text-gray-600">Hướng dẫn rất rõ ràng: viết <strong class="highlight">MỘT câu</strong>. Kết nối các ý tưởng bằng các liên từ như 'and', 'while', hoặc 'because' là được, nhưng không viết hai câu riêng biệt.</p>
+                                        <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A man is riding a bicycle. It is a sunny day."</p>
+                                        <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A man is riding a bicycle <strong class="font-bold">while</strong> the sun is shining."</p>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="faqs" class="tab-content">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Câu hỏi thường gặp</h2>
+                        <div class="space-y-3">
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <span class="font-semibold text-lg text-gray-700">Tôi có thể sử dụng các từ đã cho theo thứ tự bất kỳ không?</span>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Vâng, chắc chắn rồi.</strong> Thứ tự không quan trọng. Mục tiêu của bạn là tạo ra một câu tự nhiên và đúng ngữ pháp bao gồm cả hai từ.</p>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <span class="font-semibold text-lg text-gray-700">Tôi có phải sử dụng chính xác các từ đã cho không?</span>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Không.</strong> Bạn được khuyến khích <strong class="highlight">thay đổi dạng của các từ</strong> để phù hợp với câu của mình. Ví dụ, nếu bạn được cho từ `drive`, bạn có thể sử dụng `driving`, `drives`, hoặc `driven`.</p>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <span class="font-semibold text-lg text-gray-700">Tôi nên mô tả mọi thứ hay chỉ tập trung vào một thứ?</span>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Tập trung vào hành động hoặc chủ thể quan trọng nhất</strong> trong bức tranh, đặc biệt là hành động liên quan đến các từ khóa. Bạn chỉ có một câu, vì vậy việc cố gắng mô tả mọi thứ sẽ làm cho câu của bạn dài và phức tạp.</p>
+                                </div>
+                            </div>
+                            <div class="border-b">
+                                <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                                    <span class="font-semibold text-lg text-gray-700">Tôi có thể đưa ra giả định về bức tranh không?</span>
+                                    <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Tốt nhất là nên tránh đưa ra các giả định.</strong> Chỉ mô tả những gì bạn có thể thấy. Nếu bạn không chắc chắn 100% về điều gì đó, bạn có thể sử dụng ngôn ngữ phỏng đoán như "The man appears to be..." hoặc "Trông có vẻ như...", nhưng chỉ khi cần thiết. Bám sát vào các sự kiện rõ ràng là an toàn hơn.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="exercise" class="tab-content">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Bài tập áp dụng</h2>
+                        <!-- Nested Tab Navigation for Practices -->
+                        <div class="mb-4 border-b border-gray-200">
+                             <nav class="flex space-x-2" aria-label="Practices">
+                                <button data-practice-target="practice-1" class="practice-tab-button active bg-blue-500 text-white px-3 py-2 text-sm font-medium rounded-md">Practice 1</button>
+                                <button data-practice-target="practice-2" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 2</button>
+                                <button data-practice-target="practice-3" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 3</button>
+                                <button data-practice-target="practice-4" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 4</button>
+                                <button data-practice-target="practice-5" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 5</button>
+                                <button data-practice-target="practice-6" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 6</button>
+                            </nav>
+                        </div>
+                        <!-- Nested Tab Content -->
+                        <div id="practice-1" class="practice-tab-content active"></div>
+                        <div id="practice-2" class="practice-tab-content"></div>
+                        <div id="practice-3" class="practice-tab-content"></div>
+                        <div id="practice-4" class="practice-tab-content"></div>
+                        <div id="practice-5" class="practice-tab-content"></div>
+                        <div id="practice-6" class="practice-tab-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="day2-content" class="main-tab-content">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Cách viết một Email hoàn chỉnh</h2>
+                 <div class="space-y-3">
                     <div class="border-b">
                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <h3 class="font-semibold text-lg text-gray-700">Mục tiêu</h3>
+                            <h3 class="font-semibold text-lg text-gray-700">1. Lời chào (The Greeting)</h3>
                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         <div class="accordion-content">
-                            <p class="p-4 pt-0 text-gray-600">Đối với các câu hỏi từ 1-5 của bài thi TOEIC Writing, bạn sẽ thấy một bức tranh và được cho hai từ hoặc cụm từ. Nhiệm vụ của bạn là viết <strong class="highlight">một câu duy nhất</strong>, <strong class="highlight">đúng ngữ pháp</strong> để mô tả bức tranh và <strong class="highlight">sử dụng cả hai từ đã cho</strong>.</p>
+                            <div class="p-4 pt-0 text-gray-600 space-y-2">
+                                <p>Bắt đầu email bằng một lời chào lịch sự. Luôn ưu tiên dùng <strong class="highlight">họ (last name)</strong> để thể hiện sự trang trọng.</p>
+                                <ul class="list-disc list-inside pl-4">
+                                    <li>Khi biết tên: <strong class="highlight">Dear Mr. Parker,</strong> hoặc <strong class="highlight">Dear Ms. White,</strong></li>
+                                    <li>Khi không chắc về giới tính: <strong class="highlight">Dear Mr./Ms. Contos,</strong></li>
+                                    <li>Khi không biết người nhận cụ thể: <strong class="highlight">To whom it may concern,</strong></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="border-b">
+                     <div class="border-b">
                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <h3 class="font-semibold text-lg text-gray-700">Chi tiết & Tiêu chí chấm điểm</h3>
+                            <h3 class="font-semibold text-lg text-gray-700">2. Nêu mục đích Email (The Purpose)</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                             <p class="p-4 pt-0 text-gray-600">Ngay sau lời chào, hãy giới thiệu bản thân (nếu cần) và đi thẳng vào mục đích của email. Ví dụ: <br><strong class="highlight">"I am Nam, one of your employees. I am writing this email in response to your request regarding the office relocation."</strong></p>
+                        </div>
+                    </div>
+                     <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-gray-700">3. Phát triển ý chính (Main & Supporting Ideas)</h3>
                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         <div class="accordion-content">
                             <div class="p-4 pt-0 text-gray-600 space-y-4">
-                                <ul class="list-disc list-inside space-y-2 pl-2">
-                                    <li><span class="font-semibold">Số câu hỏi:</span> 5 câu.</li>
-                                    <li><span class="font-semibold">Thời gian:</span> Bạn có <strong class="highlight">8 phút</strong> cho toàn bộ phần này.</li>
-                                    <li><span class="font-semibold">Linh hoạt:</span> Bạn có thể <strong class="highlight">thay đổi dạng của từ</strong> đã cho (ví dụ: 'drive' thành 'driving') và sử dụng chúng theo <strong class="highlight">bất kỳ thứ tự nào</strong>.</li>
-                                </ul>
-                                <ul class="list-disc list-inside space-y-2 pl-2">
-                                     <h4 class="font-semibold text-gray-700 -ml-2">Tiêu chí chấm điểm:</h4>
-                                    <li><span class="font-semibold">Ngữ pháp:</span> Câu của bạn có đúng ngữ pháp không?</li>
-                                    <li><span class="font-semibold">Sự liên quan:</span> Câu của bạn có mô tả chính xác bức tranh không?</li>
-                                    <li><span class="font-semibold">Sử dụng từ khóa:</span> Bạn đã sử dụng đúng cả hai từ khóa được cung cấp chưa?</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-b">
-                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <h3 class="font-semibold text-lg text-gray-700">Chiến lược 4 bước để thành công</h3>
-                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                         <div class="accordion-content">
-                            <ol class="list-decimal list-inside space-y-3 p-4 pt-0 text-gray-600">
-                                <li><strong>Phân tích tranh (10 giây):</strong> Nhanh chóng xác định <strong class="highlight">chủ thể chính, hành động, và bối cảnh</strong>. Chuyện gì đang xảy ra? Ai có liên quan?</li>
-                                <li><strong>Nghiên cứu từ khóa:</strong> Nhìn vào hai từ bạn phải sử dụng. Suy nghĩ về cách chúng <strong class="highlight">liên quan đến bức tranh</strong> và cách bạn có thể thay đổi dạng của chúng nếu cần.</li>
-                                <li><strong>Xây dựng câu:</strong> Viết <strong class="highlight">một câu hoàn chỉnh duy nhất</strong>. Bắt đầu với chủ ngữ và động từ rõ ràng. Cấu trúc đơn giản như `Chủ ngữ + Động từ + Tân ngữ` thường là tốt nhất.</li>
-                                <li><strong>Xem lại và chỉnh sửa (15 giây):</strong> Kiểm tra nhanh các lỗi. <strong class="highlight">Sự hòa hợp chủ ngữ-động từ</strong> có đúng không? Có <strong class="highlight">lỗi chính tả</strong> nào không? Bạn đã <strong class="highlight">sử dụng cả hai từ khóa</strong> chưa?</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="mistakes" class="tab-content">
-                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Tránh những lỗi thường gặp này</h2>
-                <div class="space-y-3">
-                     <div class="border-b">
-                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <h3 class="font-semibold text-lg text-red-600">1. Lỗi ngữ pháp</h3>
-                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="p-4 pt-0 space-y-2">
-                                <p class="text-gray-600">Đây là vấn đề phổ biến nhất. Hãy chú ý kỹ đến <strong class="highlight">thì của động từ</strong> và <strong class="highlight">sự hòa hợp giữa chủ ngữ và động từ</strong>.</p>
-                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A woman <strong class="font-bold">are</strong> looking at the document."</p>
-                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A woman <strong class="font-bold">is</strong> looking at the document."</p>
+                                <p>Đây là phần thân bài, nơi bạn trả lời các yêu cầu trong đề bài. <strong class="highlight">Lưu ý quan trọng:</strong> Tất cả các ý chính và ý bổ trợ nên được viết chung trong <strong class="highlight">một đoạn văn duy nhất</strong>, không chia thành các đoạn nhỏ.</p>
+                                <p><strong>- Đưa ra thông tin:</strong> Trả lời trực tiếp câu hỏi của người gửi. Ví dụ: <br><strong class="highlight">"I would like you to know that I will be available on Tuesday..."</strong></p>
+                                <p><strong>- Đặt câu hỏi:</strong> Khi đề bài yêu cầu bạn đặt câu hỏi, hãy dùng cấu trúc rõ ràng. Ví dụ:<br><strong class="highlight">"However, I have a couple of questions. First, how long does it take? Second, do I need to bring any tools?"</strong></p>
+                                <p><strong>- Thêm ý bổ trợ:</strong> Để email thuyết phục hơn, hãy thêm lý do hoặc chi tiết cho các ý chính của bạn (supporting ideas). Ví dụ:<br><strong class="highlight">"...as I have a client meeting on Monday. I need to know it in advance as I have to pick up my son from his school at 6."</strong></p>
                             </div>
                         </div>
                     </div>
                     <div class="border-b">
                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <h3 class="font-semibold text-lg text-red-600">2. Không sử dụng cả hai từ khóa</h3>
+                            <h3 class="font-semibold text-lg text-gray-700">4. Lời kết (The Closing)</h3>
                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         <div class="accordion-content">
-                            <div class="p-4 pt-0 space-y-2">
-                                <p class="text-gray-600">Bạn <strong class="highlight">phải bao gồm cả hai từ đã cho</strong> (hoặc các biến thể của chúng). Bỏ lỡ một từ sẽ dẫn đến điểm thấp cho câu hỏi đó.</p>
-                                <p class="bg-gray-200 p-2 rounded-md"><strong>Từ khóa:</strong> `man`, `talking`</p>
-                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A man is on the phone." (Thiếu từ khóa <strong class="font-bold">'talking'</strong>)</p>
-                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A man is <strong class="font-bold">talking</strong> on the phone."</p>
+                            <div class="p-4 pt-0 text-gray-600 space-y-2">
+                                <p>Kết thúc email bằng một câu thể hiện mong muốn nhận được phản hồi. Ví dụ: <strong class="highlight">"I am looking forward to hearing from you soon."</strong></p>
+                                <p>Sau đó là lời chào cuối thư. Cụm từ <strong class="highlight">"Best regards,"</strong> là lựa chọn <strong class="highlight">an toàn và phù hợp nhất</strong> cho hầu hết các đề bài trong TOEIC Writing.</p>
                             </div>
                         </div>
                     </div>
                      <div class="border-b">
                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <h3 class="font-semibold text-lg text-red-600">3. Mô tả không liên quan</h3>
+                            <h3 class="font-semibold text-lg text-gray-700">5. Chữ ký (The Signature)</h3>
                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         <div class="accordion-content">
-                            <div class="p-4 pt-0 space-y-2">
-                                <p class="text-gray-600">Câu phải mô tả <strong class="highlight">chính xác</strong> bức ảnh. <strong class="highlight">Đừng bịa ra một câu chuyện</strong> hoặc mô tả điều gì đó không thể nhìn thấy rõ ràng.</p>
-                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "The man is probably thinking about his vacation." (Đây là một <strong class="font-bold">phỏng đoán</strong>, không phải là mô tả.)</p>
-                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "The man is looking out the window."</p>
-                            </div>
+                             <p class="p-4 pt-0 text-gray-600">Ký tên của bạn ở cuối thư. <strong class="highlight">Lưu ý quan trọng:</strong> Hãy đọc kỹ đề bài để biết bạn đang đóng vai ai trong email và ký tên cho đúng.</p>
                         </div>
                     </div>
-                    <div class="border-b">
+                     <div class="border-b">
                         <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                             <h3 class="font-semibold text-lg text-red-600">4. Viết nhiều hơn một câu</h3>
-                             <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            <h3 class="font-semibold text-lg text-gray-700">Email hoàn chỉnh mẫu</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         <div class="accordion-content">
-                           <div class="p-4 pt-0 space-y-2">
-                                <p class="text-gray-600">Hướng dẫn rất rõ ràng: viết <strong class="highlight">MỘT câu</strong>. Kết nối các ý tưởng bằng các liên từ như 'and', 'while', hoặc 'because' là được, nhưng không viết hai câu riêng biệt.</p>
-                                <p class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-r-lg"><strong>Sai:</strong> "A man is riding a bicycle. It is a sunny day."</p>
-                                <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-r-lg"><strong>Đúng:</strong> "A man is riding a bicycle <strong class="font-bold">while</strong> the sun is shining."</p>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                             <div class="p-4 pt-0 text-gray-800">
+                                 <pre class="email-example">Dear Mr. Parker,
 
-            <div id="faqs" class="tab-content">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Câu hỏi thường gặp</h2>
-                 <div class="space-y-3">
-                    <div class="border-b">
-                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <span class="font-semibold text-lg text-gray-700">Tôi có thể sử dụng các từ đã cho theo thứ tự bất kỳ không?</span>
-                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Vâng, chắc chắn rồi.</strong> Thứ tự không quan trọng. Mục tiêu của bạn là tạo ra một câu tự nhiên và đúng ngữ pháp bao gồm cả hai từ.</p>
-                        </div>
-                    </div>
-                    <div class="border-b">
-                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <span class="font-semibold text-lg text-gray-700">Tôi có phải sử dụng chính xác các từ đã cho không?</span>
-                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Không.</strong> Bạn được khuyến khích <strong class="highlight">thay đổi dạng của các từ</strong> để phù hợp với câu của mình. Ví dụ, nếu bạn được cho từ `drive`, bạn có thể sử dụng `driving`, `drives`, hoặc `driven`.</p>
-                        </div>
-                    </div>
-                    <div class="border-b">
-                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <span class="font-semibold text-lg text-gray-700">Tôi nên mô tả mọi thứ hay chỉ tập trung vào một thứ?</span>
-                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Tập trung vào hành động hoặc chủ thể quan trọng nhất</strong> trong bức tranh, đặc biệt là hành động liên quan đến các từ khóa. Bạn chỉ có một câu, vì vậy việc cố gắng mô tả mọi thứ sẽ làm cho câu của bạn dài và phức tạp.</p>
-                        </div>
-                    </div>
-                    <div class="border-b">
-                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
-                            <span class="font-semibold text-lg text-gray-700">Tôi có thể đưa ra giả định về bức tranh không?</span>
-                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Tốt nhất là nên tránh đưa ra các giả định.</strong> Chỉ mô tả những gì bạn có thể thấy. Nếu bạn không chắc chắn 100% về điều gì đó, bạn có thể sử dụng ngôn ngữ phỏng đoán như "The man appears to be..." hoặc "It looks like...", nhưng chỉ khi cần thiết. Bám sát vào các sự kiện rõ ràng là an toàn hơn.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+I am Nam, one of your employees. I am writing this email in response to your request regarding the office relocation. 
 
-            <div id="exercise" class="tab-content">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Bài tập áp dụng</h2>
-                 <!-- Nested Tab Navigation for Practices -->
-                <div class="mb-4 border-b border-gray-200">
-                     <nav class="flex space-x-2" aria-label="Practices">
-                        <button data-practice-target="practice-1" class="practice-tab-button active bg-blue-500 text-white px-3 py-2 text-sm font-medium rounded-md">Practice 1</button>
-                        <button data-practice-target="practice-2" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 2</button>
-                        <button data-practice-target="practice-3" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 3</button>
-                        <button data-practice-target="practice-4" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 4</button>
-                        <button data-practice-target="practice-5" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 5</button>
-                        <button data-practice-target="practice-6" class="practice-tab-button bg-gray-200 text-gray-600 px-3 py-2 text-sm font-medium rounded-md">Practice 6</button>
-                    </nav>
-                </div>
-                <!-- Nested Tab Content -->
-                <div id="practice-1" class="practice-tab-content active"></div>
-                <div id="practice-2" class="practice-tab-content"></div>
-                <div id="practice-3" class="practice-tab-content"></div>
-                <div id="practice-4" class="practice-tab-content"></div>
-                <div id="practice-5" class="practice-tab-content"></div>
-                <div id="practice-6" class="practice-tab-content"></div>
+I would like you to know that I will be available on Tuesday as I have a client meeting on Monday and a conference on Wednesday. However, I have a couple of questions related to the transition. First, how long does it take? I need to know it in advance as I need to pick up my son from his school at 6. Second, do I need to bring any tools? If you need, I can bring my electric screwdriver that would be helpful for disassembling and assembling the cubicles. 
+
+I am looking forward to hearing from you soon. 
+
+Best regards,
+Do Tuan Nam</pre>
+                             </div>
+                        </div>
+                    </div>
+                     <div class="border-b">
+                        <button class="accordion-toggle-button w-full text-left flex justify-between items-center py-4">
+                            <h3 class="font-semibold text-lg text-gray-700">Bài tập: Sắp xếp cấu trúc Email</h3>
+                            <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                             <div class="p-4 pt-0 text-gray-800">
+                                <p class="mb-4 text-gray-600">Kéo các phần của email vào đúng vị trí trong khung bên dưới, sau đó nhấn "Kiểm tra".</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <!-- Draggable Items -->
+                                    <div id="draggable-parts" class="space-y-3 p-4 bg-gray-50 rounded-lg">
+                                        <!-- Items will be injected here by JS -->
+                                    </div>
+                                    <!-- Drop Zones -->
+                                    <div class="space-y-2 p-4 border rounded-lg">
+                                        <div data-id="1" class="drop-zone p-2 rounded-md flex items-center"><span class="text-gray-400 text-sm mr-2">Lời chào:</span></div>
+                                        <div data-id="2" class="drop-zone p-2 rounded-md flex items-center"><span class="text-gray-400 text-sm mr-2">Mục đích:</span></div>
+                                        <div data-id="3" class="drop-zone p-2 rounded-md flex items-center"><span class="text-gray-400 text-sm mr-2">Nội dung chính:</span></div>
+                                        <div data-id="4" class="drop-zone p-2 rounded-md flex items-center"><span class="text-gray-400 text-sm mr-2">Câu kết:</span></div>
+                                        <div data-id="5" class="drop-zone p-2 rounded-md flex items-center"><span class="text-gray-400 text-sm mr-2">Chào cuối thư:</span></div>
+                                        <div data-id="6" class="drop-zone p-2 rounded-md flex items-center"><span class="text-gray-400 text-sm mr-2">Chữ ký:</span></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button id="check-dnd-button" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Kiểm tra</button>
+                                    <p id="dnd-feedback" class="mt-2 font-medium"></p>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
         </main>
     </div>
 
-    <script>
+    <script type="module">
+        import {unified} from 'https://unpkg.com/unified@9/esm.js';
+        import retextEnglish from 'https://unpkg.com/retext-english@4/esm.js';
+        import retextSpell from 'https://unpkg.com/retext-spell@5/esm.js';
+        import retextIndefiniteArticle from 'https://unpkg.com/retext-indefinite-article@4/esm.js';
+        import retextRepeatedWords from 'https://unpkg.com/retext-repeated-words@4/esm.js';
+        import dictionary from 'https://unpkg.com/dictionary-en@3.0.1/index.js';
+
         document.addEventListener('DOMContentLoaded', () => {
 
             const exercises = {
@@ -327,20 +499,35 @@
                     5: ["They are reading newspaper while they wait for some guests."]
                 }
             };
-
-            const changeTab = (clickedButton) => {
-                const tabId = clickedButton.dataset.tabTarget;
-                document.querySelectorAll('.tab-content').forEach(content => {
+            
+            // --- Helper Functions ---
+            const changeMainTab = (clickedButton) => {
+                const tabId = clickedButton.dataset.mainTabTarget;
+                 document.querySelectorAll('.main-tab-content').forEach(content => {
                     content.classList.remove('active');
-                    content.style.display = 'none';
                 });
-                document.querySelectorAll('.tab-button').forEach(button => {
+                document.querySelectorAll('.main-tab-button').forEach(button => {
                     button.classList.remove('active');
                 });
                 const newActiveTab = document.getElementById(tabId);
                 if (newActiveTab) {
                     newActiveTab.classList.add('active');
-                    newActiveTab.style.display = 'block';
+                }
+                clickedButton.classList.add('active');
+            }
+
+            const changeTab = (clickedButton) => {
+                const tabId = clickedButton.dataset.tabTarget;
+                const parent = clickedButton.closest('#day1-inner-content');
+                parent.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                parent.querySelectorAll('.tab-button').forEach(button => {
+                    button.classList.remove('active');
+                });
+                const newActiveTab = parent.querySelector(`#${tabId}`);
+                if (newActiveTab) {
+                    newActiveTab.classList.add('active');
                 }
                 clickedButton.classList.add('active');
             };
@@ -440,7 +627,7 @@
                 button.classList.add('opacity-50', 'cursor-not-allowed');
             };
             
-            // --- DYNAMIC CONTENT GENERATION & EVENT LISTENER ATTACHMENT ---
+            // --- DYNAMIC CONTENT GENERATION ---
             
             for (let i = 1; i <= 6; i++) {
                 const practiceContainer = document.getElementById(`practice-${i}`);
@@ -481,8 +668,11 @@
             }
 
 
-            // Attach all event listeners
-            document.querySelectorAll('.tab-button').forEach(button => {
+            // --- ATTACH EVENT LISTENERS ---
+            document.querySelectorAll('.main-tab-button').forEach(button => {
+                button.addEventListener('click', () => changeMainTab(button));
+            });
+            document.querySelectorAll('#day1-inner-content .tab-button').forEach(button => {
                 button.addEventListener('click', () => changeTab(button));
             });
             document.querySelectorAll('.accordion-toggle-button').forEach(button => {
@@ -497,6 +687,84 @@
                     const practiceId = parseInt(button.dataset.practice, 10);
                     checkAndHighlight(practiceId, exerciseId);
                 });
+            });
+            
+            // --- DRAG AND DROP LOGIC ---
+            const draggableContainer = document.getElementById('draggable-parts');
+            const checkDndButton = document.getElementById('check-dnd-button');
+            const dndFeedback = document.getElementById('dnd-feedback');
+            
+            const emailParts = [
+                { id: 4, text: "I am looking forward to hearing from you soon." },
+                { id: 1, text: "Dear Mr./Ms. Contos," },
+                { id: 6, text: "Nam" },
+                { id: 3, text: "However, I have two questions about it. First, how long will the trip be? ... please send me the estimated cost..." },
+                { id: 5, text: "Best regards," },
+                { id: 2, text: "I have received your email regarding the vacation package and I would like to express my interest in the trip." }
+            ];
+
+            // Shuffle and inject draggable parts
+            emailParts.sort(() => Math.random() - 0.5).forEach(part => {
+                const partEl = document.createElement('div');
+                partEl.id = `part-${part.id}`;
+                partEl.className = 'draggable p-3 bg-white border rounded-md shadow-sm';
+                partEl.textContent = part.text.length > 50 ? part.text.substring(0, 50) + '...' : part.text;
+                partEl.draggable = true;
+                draggableContainer.appendChild(partEl);
+            });
+            
+            const draggables = document.querySelectorAll('.draggable');
+            const dropZones = document.querySelectorAll('.drop-zone');
+            
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', () => {
+                    draggable.classList.add('opacity-50');
+                });
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('opacity-50');
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('drag-over');
+                });
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    const draggedId = document.querySelector('.opacity-50').id;
+                    const draggedEl = document.getElementById(draggedId);
+                    // If zone already has a draggable, move it back to the source list
+                    if (zone.querySelector('.draggable')) {
+                        draggableContainer.appendChild(zone.querySelector('.draggable'));
+                    }
+                    zone.appendChild(draggedEl);
+                });
+            });
+
+            checkDndButton.addEventListener('click', () => {
+                let allCorrect = true;
+                dropZones.forEach(zone => {
+                    zone.classList.remove('correct', 'incorrect');
+                    const child = zone.querySelector('.draggable');
+                    if (child && `part-${zone.dataset.id}` === child.id) {
+                        zone.classList.add('correct');
+                    } else {
+                        zone.classList.add('incorrect');
+                        allCorrect = false;
+                    }
+                });
+                if (allCorrect) {
+                    dndFeedback.textContent = "Chúc mừng! Bạn đã sắp xếp đúng cấu trúc.";
+                    dndFeedback.className = "mt-2 font-medium text-green-600";
+                } else {
+                    dndFeedback.textContent = "Có lỗi sai, hãy thử lại.";
+                    dndFeedback.className = "mt-2 font-medium text-red-600";
+                }
             });
 
         });
