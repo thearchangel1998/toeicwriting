@@ -254,7 +254,7 @@
                                     <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
                                 <div class="accordion-content">
-                                    <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Tốt nhất là nên tránh đưa ra các giả định.</strong> Chỉ mô tả những gì bạn có thể thấy. Nếu bạn không chắc chắn 100% về điều gì đó, bạn có thể sử dụng ngôn ngữ phỏng đoán như "The man appears to be..." hoặc "Trông có vẻ như...", nhưng chỉ khi cần thiết. Bám sát vào các sự kiện rõ ràng là an toàn hơn.</p>
+                                    <p class="p-4 pt-0 text-gray-600"><strong class="highlight">Tốt nhất là nên tránh đưa ra các giả định.</strong> Chỉ mô tả những gì bạn có thể thấy. Nếu bạn không chắc chắn 100% về điều gì đó, bạn có thể sử dụng ngôn ngữ phỏng đoán như "Người đàn ông dường như đang..." hoặc "Trông có vẻ như...", nhưng chỉ khi cần thiết. Bám sát vào các sự kiện rõ ràng là an toàn hơn.</p>
                                 </div>
                             </div>
                         </div>
@@ -401,14 +401,7 @@ Do Tuan Nam</pre>
         </main>
     </div>
 
-    <script type="module">
-        import {unified} from 'https://unpkg.com/unified@9/esm.js';
-        import retextEnglish from 'https://unpkg.com/retext-english@4/esm.js';
-        import retextSpell from 'https://unpkg.com/retext-spell@5/esm.js';
-        import retextIndefiniteArticle from 'https://unpkg.com/retext-indefinite-article@4/esm.js';
-        import retextRepeatedWords from 'https://unpkg.com/retext-repeated-words@4/esm.js';
-        import dictionary from 'https://unpkg.com/dictionary-en@3.0.1/index.js';
-
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
 
             const exercises = {
@@ -500,11 +493,11 @@ Do Tuan Nam</pre>
                 }
             };
             
-            // --- Helper Functions ---
             const changeMainTab = (clickedButton) => {
                 const tabId = clickedButton.dataset.mainTabTarget;
                  document.querySelectorAll('.main-tab-content').forEach(content => {
                     content.classList.remove('active');
+                    content.style.display = 'none';
                 });
                 document.querySelectorAll('.main-tab-button').forEach(button => {
                     button.classList.remove('active');
@@ -512,6 +505,7 @@ Do Tuan Nam</pre>
                 const newActiveTab = document.getElementById(tabId);
                 if (newActiveTab) {
                     newActiveTab.classList.add('active');
+                     newActiveTab.style.display = 'block';
                 }
                 clickedButton.classList.add('active');
             }
@@ -717,11 +711,11 @@ Do Tuan Nam</pre>
             const dropZones = document.querySelectorAll('.drop-zone');
             
             draggables.forEach(draggable => {
-                draggable.addEventListener('dragstart', () => {
-                    draggable.classList.add('opacity-50');
+                draggable.addEventListener('dragstart', (e) => {
+                    e.target.classList.add('opacity-50');
                 });
-                draggable.addEventListener('dragend', () => {
-                    draggable.classList.remove('opacity-50');
+                draggable.addEventListener('dragend', (e) => {
+                    e.target.classList.remove('opacity-50');
                 });
             });
 
@@ -736,8 +730,7 @@ Do Tuan Nam</pre>
                 zone.addEventListener('drop', e => {
                     e.preventDefault();
                     zone.classList.remove('drag-over');
-                    const draggedId = document.querySelector('.opacity-50').id;
-                    const draggedEl = document.getElementById(draggedId);
+                    const draggedEl = document.querySelector('.opacity-50');
                     // If zone already has a draggable, move it back to the source list
                     if (zone.querySelector('.draggable')) {
                         draggableContainer.appendChild(zone.querySelector('.draggable'));
