@@ -403,7 +403,6 @@ Do Tuan Nam</pre>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             const exercises = {
                 1: [
                     { question: 1, keywords: ['mechanic', 'teach'], variations: { mechanic: 'mechanic(s)?', teach: 'teach(es|ing|ught)?' } },
@@ -692,7 +691,7 @@ Do Tuan Nam</pre>
                 { id: 4, text: "I am looking forward to hearing from you soon." },
                 { id: 1, text: "Dear Mr./Ms. Contos," },
                 { id: 6, text: "Nam" },
-                { id: 3, text: "However, I have two questions about it. First, how long will the trip be? ... please send me the estimated cost..." },
+                { id: 3, text: "However, I have two questions about it. First, how long will the trip be? I have only a week off so I need to make sure about the length in advance. Second, is the discount eligible for all types of rooms? I am wondering whether I should book a single room for my wife and me or a big room for all of my family members. Furthermore, if possible, please send me the estimated cost of the whole trip so that I can be financially well prepared." },
                 { id: 5, text: "Best regards," },
                 { id: 2, text: "I have received your email regarding the vacation package and I would like to express my interest in the trip." }
             ];
@@ -702,7 +701,7 @@ Do Tuan Nam</pre>
                 const partEl = document.createElement('div');
                 partEl.id = `part-${part.id}`;
                 partEl.className = 'draggable p-3 bg-white border rounded-md shadow-sm';
-                partEl.textContent = part.text.length > 50 ? part.text.substring(0, 50) + '...' : part.text;
+                partEl.textContent = part.text;
                 partEl.draggable = true;
                 draggableContainer.appendChild(partEl);
             });
